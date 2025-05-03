@@ -1,8 +1,18 @@
+@import "flatpickr/dist/flatpickr.min.css";
 @import "modern-normalize/modern-normalize.css";
+
+:root {
+  font-size: 1rem;
+  --orange: #f16e21;
+  --blue: #004467;
+  --bg-white: #fff;
+  --bg-light-grey: #f8f9fa;
+}
 
 *,
 *::before,
 *::after {
+  color: var(--blue);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -11,8 +21,7 @@
 body {
   font-family: sans-serif;
   line-height: 1.5;
-  color: #333;
-  background-color: #f8f9fa;
+  background-color: var(--bg-white);
 }
 
 h1,
@@ -52,10 +61,11 @@ input[type="number"],
 input[type="date"],
 select,
 textarea {
+  background-color: var(--bg-light-grey);
   width: 100%;
   padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
+  /* margin-bottom: 1rem; */
+  border: 1px solid var(--blue);
   border-radius: 0.25rem;
   font-size: 1rem;
 }
@@ -67,8 +77,8 @@ textarea {
 
 button {
   padding: 0.75rem 1.5rem;
-  background-color: #0078d7;
-  color: white;
+  background-color: var(--blue);
+  color: var(--bg-white);
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -90,10 +100,94 @@ button:hover {
   margin-left: auto;
 }
 
+/* *** FILTER CONTROLS *** */
+.filter-controls {
+  margin-top: 5px;
+  /* justify-content: space-between !important; */
+  width: 100%;
+}
+.filter-controls input {
+  padding: 0.25rem 0.75rem;
+}
+.filter-controls button {
+  height: 100%;
+  padding: 5px 10px;
+}
+
+.filter-group {
+  width: 40%;
+  gap: 0 !important;
+}
+
+/* *** SUMMARY *** */
+.summary {
+  /* border: 1px solid var(--orange); */
+  width: 100%;
+  margin: 5px;
+}
+
+.summ-title img {
+  width: 70px;
+}
+.summ-title h2 {
+  margin-bottom: 0;
+  color: var(--orange);
+}
+
+.summary .totals {
+  width: 100%;
+  gap: 3rem;
+  /* justify-content: space-between; */
+}
+.summary .totals div {
+  width: 100%;
+  gap: 0.1rem;
+}
+.summary .totals span {
+  font-weight: bold;
+  padding: 1px 5px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid var(--orange);
+  border-radius: 0.25rem;
+}
+
+/* *** ADD BUTTON *** */
+/* .add-expense {
+} */
+.add-expense:hover {
+  color: var(--orange);
+}
+
+/* *** LIST *** */
+.list {
+  padding: 2px 5px;
+  margin-bottom: 0;
+  border: 1px solid var(--orange);
+  border-radius: 0.25rem;
+  width: 100%;
+  height: auto;
+}
+
+.list {
+  gap: 0px !important;
+}
+
+.list button {
+  padding: 2px 5px;
+}
+
+.list li {
+  width: 100%;
+  justify-content: space-around;
+}
+
 /* Flexbox (Mobile-First) */
 .flex-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -110,10 +204,10 @@ ul {
   padding-left: 0;
   margin-left: 0;
 }
-
+/* 
 ul li {
   margin-bottom: 0.5rem;
-}
+} */
 
 /*** Media Queries
 

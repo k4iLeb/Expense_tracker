@@ -1,0 +1,10 @@
+orange: #f16e21
+fonts: #004467
+bg: #fff
+
+add fox logo
+add summary basic CSS
+
+TODO:
+change text colors on hover to orange from white
+figure out why date is not formatted as DD/MM/YYYY

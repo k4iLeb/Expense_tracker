@@ -6,6 +6,64 @@
     <title>Expense tracker</title>
   </head>
   <body>
-    <div id="content">ASDF</div>
+    <div class="container flex-center">
+      <div class="filter-controls flex-row">
+        <div class="filter-group flex-center">
+          <label for="start-date-filter">From:</label>
+          <input
+            type="text"
+            id="start-date-filter"
+            placeholder="Select Start Date"
+          />
+        </div>
+        <div class="filter-group flex-center">
+          <label for="end-date-filter">To:</label>
+          <input
+            type="text"
+            id="end-date-filter"
+            placeholder="Select End Date"
+          />
+        </div>
+        <!-- <div class="filter-group flex-center">
+          <label for="date-filter">Date:</label>
+          <input type="text" id="date-filter" placeholder="Select Date" />
+        </div> -->
+        <!-- <div class="filter-group flex-center">
+          <label for="month-filter">Month:</label>
+          <select id="month-filter" placeholder="Select Date">
+            placeholder="Select Date"
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="11">December</option>
+          </select>
+        </div> -->
+        <!-- <div class="filter-group flex-center">
+          <label for="year-filter">Year:</label>
+          <select id="year-filter"></select>
+        </div> -->
+        <button id="apply-filters">Apply Filters</button>
+      </div>
+      <div class="summary flex-center">
+        <div class="summ-title flex-row">
+          <img src="./images/fox-logo.png" alt="fox-logo" />
+          <h2>Expenses</h2>
+        </div>
+        <div class="totals flex-row">
+          <div class="today-tot flex-center">Today: <span>20€</span></div>
+          <div class="month-tot flex-center">This month: <span>240€</span></div>
+        </div>
+      </div>
+      <button class="add-expense">Add Expense</button>
+      <ul class="list flex-center">
+        <li class="flex-row">
+          <span class="li-name">Market</span><span class="li-amount">20€</span
+          ><span class="li-date">03/05/2025</span
+          ><span class="li-category">gas</span>
+          <button class="del-btn">del</button>
+        </li>
+        <li></li>
+      </ul>
+      <div class="modal"></div>
+    </div>
   </body>
 </html>
