@@ -14,7 +14,7 @@ module.exports = {
       } else if ([".png", ".svg", ".jpg", ".jpeg", ".gif"].includes(ext)) {
         return "images/[hash][ext][query]";
       }
-      return "[hash][ext][query]"; //default case if it is neither font nor image.
+      return "[hash][ext][query]";
     },
   },
   plugins: [
