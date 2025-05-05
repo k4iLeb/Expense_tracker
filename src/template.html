@@ -7,35 +7,38 @@
   </head>
   <body>
     <div class="container flex-center">
+      <!-- *** FILTERS *** -->
       <div class="filter-controls flex-row">
         <div class="filter-group flex-center">
-          <label for="start-date-filter">From:</label>
+          <label for="from-date-filter">From:</label>
           <input
             type="text"
-            id="start-date-filter"
-            placeholder="Select Start Date"
+            id="from-date-filter"
+            placeholder="Select from Date"
           />
         </div>
         <div class="filter-group flex-center">
-          <label for="end-date-filter">To:</label>
-          <input
-            type="text"
-            id="end-date-filter"
-            placeholder="Select End Date"
-          />
+          <label for="to-date-filter">To:</label>
+          <input type="text" id="to-date-filter" placeholder="Select to Date" />
         </div>
-        <button id="apply-filters">Apply Filters</button>
+        <div class="filter-btns-div flex-center">
+          <p>Filters:</p>
+          <button id="apply-filters">Apply</button>
+          <button id="reset-filters">Reset</button>
+        </div>
       </div>
+      <!-- *** SUMMARY *** -->
       <div class="summary flex-center">
         <div class="summ-title flex-row">
           <img src="./images/fox-logo.png" alt="fox-logo" />
           <h2>Expenses</h2>
         </div>
         <div class="totals flex-row">
-          <div class="today-tot flex-center">Today: <span>20€</span></div>
-          <div class="month-tot flex-center">This month: <span>240€</span></div>
+          <div class="today-tot flex-center">Today: <span></span></div>
+          <div class="month-tot flex-center">This month: <span></span></div>
         </div>
       </div>
+      <!-- *** ADD EXPENSE MODAL *** -->
       <button class="add-expense-modal">Add Expense</button>
       <ul class="expense-list flex-center">
         <!-- <li class="flex-row">
@@ -51,7 +54,7 @@
         <div class="add-modal-content flex-center">
           <div class="form-title flex-row">
             <h2>Add expense</h2>
-            <span class="close-modal">x</span>
+            <button class="close-modal">x</button>
           </div>
           <form action="" class="modal-form flex-center">
             <div class="modal-form-grp">
@@ -61,7 +64,7 @@
                 id="exp-name"
                 name="exp-name"
                 maxlength="30"
-                pattern="[\w\s]{4,20}"
+                pattern="^[\d\w\.\-]{3,15}[\s]?([\w\d\.\-]{1,15})?$"
                 required
               />
             </div>
@@ -72,7 +75,8 @@
                 id="exp-amount"
                 name="exp-amount"
                 min="0"
-                pattern="[0-9]{1,4}(\.[0-9]{2})?"
+                max="9999.99"
+                step="0.01"
                 required
               />
             </div>
@@ -89,23 +93,48 @@
             </div>
             <div class="modal-form-grp">
               <label for="exp-date">Date:</label>
-              <input type="text" id="exp-date" name="exp-date" required />
+              <input
+                type="text"
+                id="exp-date"
+                name="exp-date"
+                placeholder="Select Date"
+                required
+              />
             </div>
             <button type="submit" class="submit-btn">Add</button>
           </form>
         </div>
       </div>
-      <!-- <div class="info-modal" style="display: block">
-        <div class="info-title-div">
-          <h2></h2>
-          <span class="close-info-modal">x</span>
-        </div>
-        <p>Name: <span></span></p>
-        <p>Amount: <span></span></p>
-        <p>Category: <span></span></p>
-        <p>Date: <span></span></p>
-        <button type="button">Delete Item</button>
-      </div> -->
+      <!-- *** INFO MODAL *** -->
+      <div class="info-modal flex-center" style="display: none">
+        <!-- <div class="info-modal-content">
+          <h2>Details</h2>
+          <button class="close-info-modal">x</button>
+          <p>Name: <span>${item.name}</span></p>
+          <p>Amount: <span>${item.amount.toFixed(2)} €</span></p>
+          <p>Category: <span>${item.category}</span></p>
+          <p>Date: <span>${item.date}</span></p>
+          <button type="button" class="info-del-btn">Delete Item</button>
+        </div> -->
+      </div>
+      <!-- *** Filter Modal *** -->
+      <div class="filter-modal flex-center" style="display: none">
+        <!-- <div class="filter-modal-content flex-center">
+          <button class="close-filter-modal">x</button>
+          <h2>Expenses</h2>
+          <p><span>fromDate</span>-<span>toDate</span></p>
+          <p>Total amount: <span>1500 €</span></p>
+          <h3>Categories:</h3>
+          <div class="filter-cat-div">
+            <p>Food: <span> 0 €</span></p>
+            <p>Transport: <span> 0 €</span></p>
+            <p>Bills: <span> 0 €</span></p>
+            <p>Entertainment: <span> 0 €</span></p>
+            <p>Other: <span> 0 €</span></p>
+          </div>
+        </div> -->
+      </div>
+      <div class="blur-modal" style="display: none"></div>
     </div>
   </body>
 </html>

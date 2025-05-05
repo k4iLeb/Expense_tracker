@@ -29,7 +29,7 @@ input[type="number"],
 input[type="date"],
 select,
 textarea {
-  background-color: var(--bg-light-grey);
+  background-color: var(--bg-light-grey) !important;
   width: 100%;
   padding: 0.75rem;
   /* margin-bottom: 1rem; */
@@ -61,6 +61,10 @@ button {
   transition: background-color 0.3s ease;
 }
 
+button:hover {
+  color: var(--orange);
+}
+
 /*** Layout (Mobile-First) ***/
 
 .container {
@@ -83,13 +87,27 @@ button {
   font-size: 0.9rem;
 }
 .filter-controls button {
-  height: 100%;
-  padding: 5px 10px;
+  font-size: 0.9rem;
+  width: 90%;
+  /* height: 100%; */
+  padding: 0.2rem 0.5rem;
 }
 
 .filter-group {
   width: 36%;
   gap: 0 !important;
+}
+
+.filter-btns-div {
+  width: 100%;
+  font-size: 0.9rem;
+  gap: 0.2rem !important;
+}
+
+/* *** FILTER MODAL *** */
+.filter-modal .tot-amount {
+  font-size: 1.2rem;
+  color: var(--orange);
 }
 
 /* *** SUMMARY *** */
@@ -132,19 +150,20 @@ button {
   font-weight: bold;
 }
 
-.add-expense-modal:hover {
+/* .add-expense-modal:hover {
   color: var(--orange);
-}
+} */
 
 /* *** ADD MODAL *** */
 .add-modal,
-.info-modal {
+.info-modal,
+.filter-modal {
   border: 2px solid var(--blue);
   border-radius: 0.25rem;
   padding: 5px;
   width: 80%;
   position: absolute;
-  z-index: 1;
+  z-index: 100;
   background-color: var(--bg-white);
   top: 10%;
   margin: 0px 5px;
@@ -163,7 +182,8 @@ button {
 
 .add-modal .form-title .close-modal,
 .del-btn,
-.close-info-modal {
+.close-info-modal,
+.close-filter-modal {
   background-color: var(--blue);
   border-radius: 0.25rem;
   border: none;
@@ -176,16 +196,17 @@ button {
   align-items: center;
   justify-content: center;
   line-height: 0;
-  /* padding: 1rem; */
+  padding: 0.5rem;
 }
 .add-modal .form-title .close-modal:hover {
   color: var(--orange);
   cursor: pointer;
-  /* background-color: darken(var(--blue), 10%); */
 }
 
 .add-modal h2,
-.info-modal h2 {
+.info-modal h2,
+.filter-modal h2,
+.filter-modal h3 {
   margin-bottom: 0;
   color: var(--orange);
   /* margin-top: 5px; */
@@ -233,15 +254,29 @@ button {
   padding: 0.25rem 0.5rem;
   font-size: 0.9rem;
 }
-.expense-list .list-item .li-amount {
-  text-align: end;
+.expense-list .list-item:hover {
+  color: var(--orange);
+  cursor: pointer;
 }
+
 .expense-list .list-item * {
   color: inherit;
 }
-.expense-list .list-item span[class*="li-"] {
-  width: 5rem;
+
+.expense-list .list-item .li-date {
+  width: 25%;
 }
+
+.expense-list .list-item .li-name {
+  overflow: hidden;
+  width: 40%;
+}
+
+.expense-list .list-item .li-amount {
+  width: 20%;
+  text-align: end;
+}
+
 .expense-list .list-item .del-btn {
   background-color: var(--bg-white);
   color: var(--blue);
@@ -267,7 +302,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 ul {
@@ -275,25 +310,45 @@ ul {
   padding-left: 0;
   margin-left: 0;
 }
-/* 
-ul li {
-  margin-bottom: 0.5rem;
-} */
 
 /* *** INFO MODAL *** */
-.info-modal {
+.info-modal,
+.filter-modal {
   padding: 1rem;
 }
 
-.info-modal .info-title-div {
-  display: flex;
-  justify-content: space-between;
-  width: 60%;
+.info-modal .info-modal-content,
+.filter-modal-content {
+  width: 100%;
+  position: relative;
 }
 
-.info-modal p span {
-  /* color: var(--orange); */
+.info-modal .close-info-modal,
+.filter-modal .close-filter-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.info-modal p span,
+.filter-modal p span {
   font-weight: bold;
+}
+
+/* *** EFFECTS *** */
+
+.blur-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
 }
 
 /*** Media Queries

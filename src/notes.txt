@@ -10,7 +10,19 @@ DID:
 -add localeStorage logic
 -add delete button
 -add renderExpenses
--add infoModal WIP
+-add infoModal 
+
+DID 05/05/2025:
+-add Filter modal
+-add Summary logic + UI
+-sort list by latest date
+-add blue backdrop to Add expense WIP -> DO FOR REST POPUPS
+-add blur effect on modals pop ups
+-add modal input JS validation 
+
+KNOWN BUGS: 
+- add modal name input incorrect size on desktop
+
 
 
 TODO:
@@ -18,7 +30,8 @@ change text colors on hover to orange from white
 figure out why date is not formatted as DD/MM/YYYY
 fix flatpickr input font size (test on other browsers and on phone)
 fix UI for 320px width
+fix li-name overflow
+fix filter modal when expenses array is empty to show "No expenses during that period"
 
 - SOS Create README and explain technologies used and how to build it locally
-- Fix add modal input validation (maybe JS ?)
-- Sort displayed items by latest date?
+- fix list item delete button
