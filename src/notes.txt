@@ -5,7 +5,20 @@ bg: #fff
 add fox logo
 add summary basic CSS
 
+DID: 
+-add addModal and listeners and UI logic
+-add localeStorage logic
+-add delete button
+-add renderExpenses
+-add infoModal WIP
+
+
 TODO:
 change text colors on hover to orange from white
 figure out why date is not formatted as DD/MM/YYYY
 fix flatpickr input font size (test on other browsers and on phone)
+fix UI for 320px width
+
+- SOS Create README and explain technologies used and how to build it locally
+- Fix add modal input validation (maybe JS ?)
+- Sort displayed items by latest date?

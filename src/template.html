@@ -24,23 +24,6 @@
             placeholder="Select End Date"
           />
         </div>
-        <!-- <div class="filter-group flex-center">
-          <label for="date-filter">Date:</label>
-          <input type="text" id="date-filter" placeholder="Select Date" />
-        </div> -->
-        <!-- <div class="filter-group flex-center">
-          <label for="month-filter">Month:</label>
-          <select id="month-filter" placeholder="Select Date">
-            placeholder="Select Date"
-            <option value="0">January</option>
-            <option value="1">February</option>
-            <option value="11">December</option>
-          </select>
-        </div> -->
-        <!-- <div class="filter-group flex-center">
-          <label for="year-filter">Year:</label>
-          <select id="year-filter"></select>
-        </div> -->
         <button id="apply-filters">Apply Filters</button>
       </div>
       <div class="summary flex-center">
@@ -53,17 +36,76 @@
           <div class="month-tot flex-center">This month: <span>240€</span></div>
         </div>
       </div>
-      <button class="add-expense">Add Expense</button>
-      <ul class="list flex-center">
-        <li class="flex-row">
-          <span class="li-name">Market</span><span class="li-amount">20€</span
-          ><span class="li-date">03/05/2025</span
-          ><span class="li-category">gas</span>
+      <button class="add-expense-modal">Add Expense</button>
+      <ul class="expense-list flex-center">
+        <!-- <li class="flex-row">
+          <span class="li-name">Market</span>
+          <span class="li-amount">20€</span>
+          <span class="li-date">03/05/2025</span>
+          <span class="li-category">gas</span>
           <button class="del-btn">del</button>
-        </li>
-        <li></li>
+        </li> -->
       </ul>
-      <div class="modal"></div>
+      <!-- add display:none to modal -->
+      <div class="add-modal">
+        <div class="add-modal-content flex-center">
+          <div class="form-title flex-row">
+            <h2>Add expense</h2>
+            <span class="close-modal">x</span>
+          </div>
+          <form action="" class="modal-form flex-center">
+            <div class="modal-form-grp">
+              <label for="exp-name">Name:</label>
+              <input
+                type="text"
+                id="exp-name"
+                name="exp-name"
+                maxlength="30"
+                pattern="[\w\s]{4,20}"
+                required
+              />
+            </div>
+            <div class="modal-form-grp">
+              <label for="exp-amount">Amount:</label>
+              <input
+                type="number"
+                id="exp-amount"
+                name="exp-amount"
+                min="0"
+                pattern="[0-9]{1,4}(\.[0-9]{2})?"
+                required
+              />
+            </div>
+            <div class="modal-form-grp">
+              <label for="exp-category">Category:</label>
+              <select name="exp-category" id="exp-category" required>
+                <option value="">Select a category</option>
+                <option value="food">Food</option>
+                <option value="transport">Transport</option>
+                <option value="bills">Bills</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="modal-form-grp">
+              <label for="exp-date">Date:</label>
+              <input type="text" id="exp-date" name="exp-date" required />
+            </div>
+            <button type="submit" class="submit-btn">Add</button>
+          </form>
+        </div>
+      </div>
+      <!-- <div class="info-modal" style="display: block">
+        <div class="info-title-div">
+          <h2></h2>
+          <span class="close-info-modal">x</span>
+        </div>
+        <p>Name: <span></span></p>
+        <p>Amount: <span></span></p>
+        <p>Category: <span></span></p>
+        <p>Date: <span></span></p>
+        <button type="button">Delete Item</button>
+      </div> -->
     </div>
   </body>
 </html>
