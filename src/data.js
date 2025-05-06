@@ -9,14 +9,11 @@ export function loadExpenses() {
     expenses = JSON.parse(savedExpenses);
   }
 }
-loadExpenses();
 
 // *** save to localeStorage
 function saveExpenses() {
   localStorage.setItem("expenses", JSON.stringify(expenses));
 }
-// *** RESET ARRAY IF NEEDED
-// saveExpenses();
 
 export function addExpense(name, amount, category, date) {
   const newExpense = {
@@ -32,8 +29,11 @@ export function addExpense(name, amount, category, date) {
 }
 
 export function deleteExpense(id) {
-  expenses = expenses.filter((x) => x.id != id);
-  saveExpenses();
+  const index = expenses.findIndex((x) => x.id === id);
+  if (index !== -1) {
+    expenses.splice(index, 1);
+    saveExpenses();
+  }
 }
 
 export function getExpenses() {

@@ -2,7 +2,6 @@ import flatpickr from "flatpickr";
 import { deleteExpense, getExpenses } from "./data";
 
 // *** SELECTORS
-const container = document.querySelector(".container");
 const applyFiltBtn = document.querySelector("#apply-filters");
 const resetFiltBtn = document.querySelector("#reset-filters");
 const fromDate = document.querySelector("#from-date-filter");
@@ -16,10 +15,6 @@ const closeModalBtn = document.querySelector(".add-modal .close-modal");
 const list = document.querySelector(".expense-list");
 const infoModal = document.querySelector(".info-modal");
 const blurModal = document.querySelector(".blur-modal");
-// const infoModal = document.querySelector(".info-modal");
-// console.log(list.innerHTML);
-
-// const submitExpBtn = document.querySelector(".submit-btn");
 
 // *** LISTENERS
 
@@ -42,35 +37,19 @@ applyFiltBtn.addEventListener("click", () => {
 
 // *** RESET FILTERS
 resetFiltBtn.addEventListener("click", () => {
-  // fromDate.value = "";
-  // toDate.value = "";
   fromDatePicker.clear();
   toDatePicker.clear();
 });
 
-// TODO: WHEN ADD MODAL IS ON, YOU CANT CLICK OUTSIDE
-window.addEventListener("click", (e) => {
-  // console.log(e.target);
-  // if (e.target === modal) {
-  //   console.log(e.target);
-  // }
-});
-
 // *** FUNCTIONS
 export function initUI() {
-  // initDatePickers();
   renderExpenses();
-  // renderSummary();
 }
 
 // *** FILTERS
 
 function renderFilterModal(from, to) {
   if (!from && !to) return alert("Please pick 'FROM' and 'TO' dates");
-  // *** TEST
-  // from = "05/05/2025";
-  // to = "06/05/2025";
-
   let filtArr = sortExpByLatestDate(getExpenses())
     .reverse()
     .filter((x) => {
@@ -79,64 +58,68 @@ function renderFilterModal(from, to) {
         reverseDateString(x.date) <= reverseDateString(to)
       );
     });
-  console.log(filtArr);
 
-  const filtSum = filtArr.reduce((acc, val) => (acc += val.amount), 0);
-  // console.log(filtSum);
-  // *** CATEGORIES
-  const filtFood = filtArr.reduce(
-    (acc, val) => (acc += val.category == "food" ? val.amount : 0),
-    0
-  );
-  // console.log(`filtFood: ${filtFood}`);
-
-  const filtTransport = filtArr.reduce(
-    (acc, val) => (acc += val.category == "transport" ? val.amount : 0),
-    0
-  );
-  // console.log(`filtTransport: ${filtTransport}`);
-  const filtBills = filtArr.reduce(
-    (acc, val) => (acc += val.category == "bills" ? val.amount : 0),
-    0
-  );
-  // console.log(`filtBills: ${filtBills}`);
-  const filtEntertainment = filtArr.reduce(
-    (acc, val) => (acc += val.category == "entertainment" ? val.amount : 0),
-    0
-  );
-  // console.log(`filtEntertainment: ${filtEntertainment}`);
-  const filtOther = filtArr.reduce(
-    (acc, val) => (acc += val.category == "other" ? val.amount : 0),
-    0
-  );
-  // console.log(`filtOther: ${filtOther}`);
-
-  // *** CREATE ELEMENTS
-  // const filtModal = document.createElement("div");
-  // filtModal.classList.add("filter-modal", "flex-center");
-  // filtModal.innerHTML = "";
-  filtModal.innerHTML = `
+  // *** IF NO EXPENSES DURING SELECTED PERIOD
+  if (!filtArr.length) {
+    filtModal.innerHTML = `
         <div class="filter-modal-content flex-center">
           <button class="close-filter-modal">x</button>
           <h2>Expenses</h2>
-          <p><span>${from}</span> - <span>${to}</span></p>
-          <p>Total amount: <span class="tot-amount">${filtSum.toFixed(
-            2
-          )} €</span></p>
-          <h3>Categories:</h3>
-          <div class="filter-cat-div">
-            <p>Food: <span>${filtFood.toFixed(2)} €</span></p>
-            <p>Transport: <span>${filtTransport.toFixed(2)} €</span></p>
-            <p>Bills: <span>${filtBills.toFixed(2)} €</span></p>
-            <p>Entertainment: <span>${filtEntertainment.toFixed(2)} €</span></p>
-            <p>Other: <span>${filtOther.toFixed(2)} €</span></p>
-          </div>
+          <p>from <span>${from}</span> to <span>${to}</span></p>
+          <h3>No expenses during this period!</h3>
         </div>
   `;
+  } else {
+    // *** Total expenses
+    const filtSum = filtArr.reduce((acc, val) => (acc += val.amount), 0);
+    // *** CATEGORIES
+    const filtFood = filtArr.reduce(
+      (acc, val) => (acc += val.category == "food" ? val.amount : 0),
+      0
+    );
+
+    const filtTransport = filtArr.reduce(
+      (acc, val) => (acc += val.category == "transport" ? val.amount : 0),
+      0
+    );
+    const filtBills = filtArr.reduce(
+      (acc, val) => (acc += val.category == "bills" ? val.amount : 0),
+      0
+    );
+    const filtEntertainment = filtArr.reduce(
+      (acc, val) => (acc += val.category == "entertainment" ? val.amount : 0),
+      0
+    );
+    const filtOther = filtArr.reduce(
+      (acc, val) => (acc += val.category == "other" ? val.amount : 0),
+      0
+    );
+
+    // *** CREATE ELEMENTS
+    filtModal.innerHTML = `
+          <div class="filter-modal-content flex-center">
+            <button class="close-filter-modal">x</button>
+            <h2>Expenses</h2>
+            <p>from <span>${from}</span> to <span>${to}</span></p>
+            <p>Total amount: <span class="tot-amount">${filtSum.toFixed(
+              2
+            )} €</span></p>
+            <h3>Categories:</h3>
+            <div class="filter-cat-div">
+              <p>Food: <span>${filtFood.toFixed(2)} €</span></p>
+              <p>Transport: <span>${filtTransport.toFixed(2)} €</span></p>
+              <p>Bills: <span>${filtBills.toFixed(2)} €</span></p>
+              <p>Entertainment: <span>${filtEntertainment.toFixed(
+                2
+              )} €</span></p>
+              <p>Other: <span>${filtOther.toFixed(2)} €</span></p>
+            </div>
+          </div>
+    `;
+  }
   // *** SHOW MODAL
   filtModal.style.display = "block";
   addBlur();
-  // container.append(filtModal);
 
   // *** CLOSE MODAL LISTENER
   const closeFiltModal = document.querySelector(".close-filter-modal");
@@ -166,17 +149,14 @@ function renderSummary() {
     .reduce((acc, val) => {
       return (acc += val.amount);
     }, 0);
-  // console.log(todayTotal);
 
   // *** CREATE THIS MONTH
-  // console.log(`${d}/${m}/${y}`);
   const reg = new RegExp(`${m}/${y}$`);
   const monthTotal = getExpenses()
     .filter((x) => reg.test(x.date))
     .reduce((acc, val) => {
       return (acc += val.amount);
     }, 0);
-  // console.log(monthTotal);
 
   // *** RENDER SUMMARY
   todayTotalSpan.textContent = `${todayTotal} €`;
@@ -209,7 +189,6 @@ export function renderExpenses() {
         const id = target.dataset.id
           ? target.dataset.id
           : target.parentElement.dataset.id;
-        // console.log(id);
         showInfoModal(id);
         addBlur();
       } else {
@@ -266,60 +245,63 @@ function reverseDateString(date) {
 // *** SHOW EXPENSE INFO MODAL
 function showInfoModal(id) {
   const items = getExpenses();
-  const item = items.filter((item) => item.id === id)[0];
+  const item = items.find((item) => item.id === id);
 
-  // const infoModal = document.createElement("div");
-  // infoModal.classList.add("info-modal", "flex-center");
+  if (!item) {
+    console.error("Item not found for ID:", id);
+    return;
+  }
+
   infoModal.innerHTML = `
-        <div class="info-modal-content flex-center">
-          <h2>Details</h2>
-          <button class="close-info-modal">x</button>
-          <p>Name: <span>${item.name}</span></p>
-          <p>Amount: <span>${item.amount.toFixed(2)} €</span></p>
-          <p>Category: <span>${
-            item.category[0].toUpperCase() + item.category.slice(1)
-          }</span></p>
-          <p>Date: <span>${item.date}</span></p>
-          <button type="button" class="info-del-btn">Delete Item</button>
-        </div>
+  <div class="info-modal-content flex-center">
+  <h2>Details</h2>
+  <button class="close-info-modal">x</button>
+  <p>Name: <span>${item.name}</span></p>
+  <p>Amount: <span>${item.amount.toFixed(2)} €</span></p>
+  <p>Category: <span>${
+    item.category[0].toUpperCase() + item.category.slice(1)
+  }</span></p>
+  <p>Date: <span>${item.date}</span></p>
+  <button type="button" class="info-del-btn">Delete Item</button>
+  </div>
   `;
-  // container.append(infoModal);
 
-  // *** LISTENERS
-  infoModal.addEventListener("click", (e) => {
-    if (e.target.classList.contains("info-del-btn")) {
-      deleteExpense(id);
-      renderExpenses();
-      removeBlur();
-      infoModal.style.display = "none";
-    } else if (e.target.classList.contains("close-info-modal")) {
-      removeBlur();
-      infoModal.innerHTML = "";
-      infoModal.style.display = "none";
-    }
+  // *** BUG SQUASHED!
+  // infoModal.addEventListener("click", (e) => {
+  //   if (e.target.classList.contains("info-del-btn")) {
+  //     deleteExpense(id);
+  //     renderExpenses();
+  //     removeBlur();
+  //     console.log("delete", id);
+  //     infoModal.style.display = "none";
+  //   } else if (e.target.classList.contains("close-info-modal")) {
+  //     removeBlur();
+  //     console.log("x", id);
+
+  //     infoModal.innerHTML = "";
+  //     infoModal.style.display = "none";
+  //   }
+  // });
+
+  const delBtn = infoModal.querySelector(".info-del-btn");
+  delBtn.addEventListener("click", () => {
+    deleteExpense(id);
+    renderExpenses();
+    removeBlur();
+    infoModal.style.display = "none";
+  });
+
+  const closeBtn = infoModal.querySelector(".close-info-modal");
+  closeBtn.addEventListener("click", () => {
+    removeBlur();
+    infoModal.innerHTML = "";
+    infoModal.style.display = "none";
   });
 
   infoModal.style.display = "flex";
   addBlur();
 }
 
-// *** Initialize Datepickers
-// function initDatePickers() {
-//   const fromDatePicker = flatpickr("#from-date-filter", {
-//     dateFormat: "d/m/Y",
-//     onClose: function (selectedDates) {
-//       if (selectedDates[0]) {
-//         toDatePicker.set("minDate", selectedDates[0]);
-//       }
-//     },
-//   });
-//   const toDatePicker = flatpickr("#to-date-filter", {
-//     dateFormat: "d/m/Y",
-//   });
-//   flatpickr("#exp-date", {
-//     dateFormat: "d/m/Y",
-//   });
-// }
 // *** DATE PICKERS
 const fromDatePicker = flatpickr("#from-date-filter", {
   dateFormat: "d/m/Y",

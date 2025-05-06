@@ -22,7 +22,7 @@
           <input type="text" id="to-date-filter" placeholder="Select to Date" />
         </div>
         <div class="filter-btns-div flex-center">
-          <p>Filters:</p>
+          <p>Search:</p>
           <button id="apply-filters">Apply</button>
           <button id="reset-filters">Reset</button>
         </div>
@@ -40,22 +40,11 @@
       </div>
       <!-- *** ADD EXPENSE MODAL *** -->
       <button class="add-expense-modal">Add Expense</button>
-      <ul class="expense-list flex-center">
-        <!-- <li class="flex-row">
-          <span class="li-name">Market</span>
-          <span class="li-amount">20€</span>
-          <span class="li-date">03/05/2025</span>
-          <span class="li-category">gas</span>
-          <button class="del-btn">del</button>
-        </li> -->
-      </ul>
-      <!-- add display:none to modal -->
+      <ul class="expense-list flex-center"></ul>
       <div class="add-modal">
         <div class="add-modal-content flex-center">
-          <div class="form-title flex-row">
-            <h2>Add expense</h2>
-            <button class="close-modal">x</button>
-          </div>
+          <h2>Add expense</h2>
+          <button class="close-modal">x</button>
           <form action="" class="modal-form flex-center">
             <div class="modal-form-grp">
               <label for="exp-name">Name:</label>
@@ -106,34 +95,9 @@
         </div>
       </div>
       <!-- *** INFO MODAL *** -->
-      <div class="info-modal flex-center" style="display: none">
-        <!-- <div class="info-modal-content">
-          <h2>Details</h2>
-          <button class="close-info-modal">x</button>
-          <p>Name: <span>${item.name}</span></p>
-          <p>Amount: <span>${item.amount.toFixed(2)} €</span></p>
-          <p>Category: <span>${item.category}</span></p>
-          <p>Date: <span>${item.date}</span></p>
-          <button type="button" class="info-del-btn">Delete Item</button>
-        </div> -->
-      </div>
+      <div class="info-modal flex-center" style="display: none"></div>
       <!-- *** Filter Modal *** -->
-      <div class="filter-modal flex-center" style="display: none">
-        <!-- <div class="filter-modal-content flex-center">
-          <button class="close-filter-modal">x</button>
-          <h2>Expenses</h2>
-          <p><span>fromDate</span>-<span>toDate</span></p>
-          <p>Total amount: <span>1500 €</span></p>
-          <h3>Categories:</h3>
-          <div class="filter-cat-div">
-            <p>Food: <span> 0 €</span></p>
-            <p>Transport: <span> 0 €</span></p>
-            <p>Bills: <span> 0 €</span></p>
-            <p>Entertainment: <span> 0 €</span></p>
-            <p>Other: <span> 0 €</span></p>
-          </div>
-        </div> -->
-      </div>
+      <div class="filter-modal flex-center" style="display: none"></div>
       <div class="blur-modal" style="display: none"></div>
     </div>
   </body>

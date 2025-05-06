@@ -8,14 +8,12 @@ import {
   renderExpenses,
 } from "./ui";
 
-// console.log(UI);
-
 // *** QUERIES
 
 // **** LISTENERS ****
 
 document.addEventListener("DOMContentLoaded", () => {
-  // *** Add expense
+  // *** ADD EXPENSE
   document
     .querySelector(".modal-form > .submit-btn")
     .addEventListener("click", (e) => {
@@ -24,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const amount = document.querySelector("#exp-amount").value;
       const category = document.querySelector("#exp-category").value;
       const date = document.querySelector("#exp-date").value;
-      // console.log(name, amount, category, date);
       // **** INPUT VALIDATION
       if (!/^[\d\w\.\-]{3,15}[\s]?([\w\d\.\-]{1,15})?$/.test(name)) {
         return alert(`

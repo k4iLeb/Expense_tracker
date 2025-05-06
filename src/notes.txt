@@ -1,9 +1,3 @@
-orange: #f16e21
-fonts: #004467
-bg: #fff
-
-add fox logo
-add summary basic CSS
 
 DID: 
 -add addModal and listeners and UI logic
@@ -20,18 +14,25 @@ DID 05/05/2025:
 -add blur effect on modals pop ups
 -add modal input JS validation 
 
+Fix add modal title, clear unused code,add README
+
 KNOWN BUGS: 
-- add modal name input incorrect size on desktop
+- add modal name input incorrect size on desktop (webpack prod minify bug)
+
+## Potential Improvements
+
+## Potential Improvements
+
+- **Error Handling:** instead of using `alert()`.
+- **Modularity:** Further modularizing the code into smaller, more focused modules.
+- **Accessibility:** Review the HTML and CSS to ensure the application is accessible to users with disabilities (e.g., using semantic HTML, providing proper ARIA attributes, and ensuring sufficient color contrast).
+- **Performance:** Optimize performance by minimizing DOM manipulations, using efficient algorithms, and potentially implementing techniques like virtual DOM (if using a framework like React in the future).
 
 
 
 TODO:
-change text colors on hover to orange from white
 figure out why date is not formatted as DD/MM/YYYY
 fix flatpickr input font size (test on other browsers and on phone)
 fix UI for 320px width
 fix li-name overflow
-fix filter modal when expenses array is empty to show "No expenses during that period"
-
-- SOS Create README and explain technologies used and how to build it locally
-- fix list item delete button
+make categories icons
