@@ -2,6 +2,9 @@ import flatpickr from "flatpickr";
 import { deleteExpense, getExpenses } from "./data";
 
 // *** SELECTORS
+const showFiltBtn = document.querySelector(".searchBtnDiv svg");
+const hideFiltDivBtn = document.querySelector("#hideFiltDivBtn");
+const filtControlsDiv = document.querySelector(".filter-controls-div");
 const applyFiltBtn = document.querySelector("#apply-filters");
 const resetFiltBtn = document.querySelector("#reset-filters");
 const fromDate = document.querySelector("#from-date-filter");
@@ -18,6 +21,17 @@ const blurModal = document.querySelector(".blur-modal");
 
 // *** LISTENERS
 
+// *** Show filter div
+showFiltBtn.addEventListener("click", () => {
+  showFiltCtlDiv();
+  console.log(fromDatePicker);
+});
+
+// *** Hide filter div
+hideFiltDivBtn.addEventListener("click", () => {
+  hideFiltCtlDiv();
+});
+
 // *** Show Add modal
 showModalBtn.addEventListener("click", () => {
   showModal();
@@ -28,6 +42,11 @@ closeModalBtn.addEventListener("click", () => {
   hideModal();
   clearInputs();
   removeBlur();
+});
+
+// *** Hide ALL modals if blurModal is clicked
+blurModal.addEventListener("click", () => {
+  hideAllModals();
 });
 
 // *** APPLY FILTERS
@@ -47,6 +66,16 @@ export function initUI() {
 }
 
 // *** FILTERS
+
+function showFiltCtlDiv() {
+  filtControlsDiv.style.height = "100%";
+  filtControlsDiv.style.display = "flex";
+}
+
+function hideFiltCtlDiv() {
+  filtControlsDiv.style.height = "0";
+  filtControlsDiv.style.display = "none";
+}
 
 function renderFilterModal(from, to) {
   if (!from && !to) return alert("Please pick 'FROM' and 'TO' dates");
@@ -217,6 +246,13 @@ export function hideModal() {
 export function clearInputs() {
   const inputs = modal.querySelectorAll("input,select");
   inputs.forEach((x) => (x.value = ""));
+}
+
+function hideAllModals() {
+  hideModal();
+  infoModal.style.display = "none";
+  filtModal.style.display = "none";
+  removeBlur();
 }
 
 // *** EFFECTS

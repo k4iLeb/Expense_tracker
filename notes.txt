@@ -1,0 +1,10 @@
+TODO: 
+- fix iOS add modal input sizes (BUG)
+- add categories logos on info modal
+- dynamically create ALL modals instead of using innerHTML
+- add popup input textarea when "other" category is selected
+- add Custom fonts
+
+11/05/2025:
+- when clicking outside of modals, close modals and clear inputs
+- hide the "search" element and make it show by clicking on an icon

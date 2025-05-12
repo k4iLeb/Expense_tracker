@@ -71,12 +71,36 @@ button:hover {
   width: 100%;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0.5rem auto;
   position: relative;
 }
 
 /* *** FILTER CONTROLS *** */
+
+.filter-controls-div {
+  width: 100%;
+  padding-top: 0.5rem;
+  border: 2px solid var(--blue);
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.filter-controls-div h3 {
+  color: var(--orange);
+}
+
+.filter-controls-div #hideFiltDivBtn {
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 30px;
+  height: 30px;
+}
+
+/* .filter-controls-div #hideFiltDivBtn:hover {
+  color: var(--orange);
+} */
+
 .filter-controls {
   margin-top: 5px;
   width: 100%;
@@ -117,12 +141,28 @@ button:hover {
   margin: 5px;
 }
 
+.summ-title {
+  width: 100%;
+  padding: 0 2rem;
+}
+
 .summ-title img {
   width: 70px;
 }
 .summ-title h2 {
   margin-bottom: 0;
   color: var(--orange);
+  margin-right: auto;
+}
+
+.summ-title .searchBtnDiv svg {
+  width: 50px;
+  height: 50px;
+  fill: var(--blue);
+}
+
+.summ-title .searchBtnDiv svg:hover {
+  cursor: pointer;
 }
 
 .summary .totals {
@@ -179,10 +219,11 @@ button:hover {
   padding: 0 0.5rem;
 }
 
-.add-modal .form-title .close-modal,
+.add-modal .close-modal,
 .del-btn,
 .close-info-modal,
-.close-filter-modal {
+.close-filter-modal,
+#hideFiltDivBtn {
   background-color: var(--blue);
   border-radius: 0.25rem;
   border: none;
@@ -320,7 +361,8 @@ ul {
 
 .info-modal .close-info-modal,
 .filter-modal .close-filter-modal,
-.add-modal .close-modal {
+.add-modal .close-modal,
+#hideFiltDivBtn {
   position: absolute;
   top: 0;
   right: 0;
