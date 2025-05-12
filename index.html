@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense tracker</title>
+  <script defer src="main.js"></script></head>
+  <body>
+    <div class="container flex-center">
+      <!-- *** FILTERS *** -->
+      <div class="filter-controls-div flex-center" style="display: none">
+        <h3 class="filter-controls-title">Search Expenses by date</h3>
+        <button id="hideFiltDivBtn" type="button">x</button>
+        <div class="filter-controls flex-row">
+          <div class="filter-group flex-center">
+            <label for="from-date-filter">From:</label>
+            <input
+              type="text"
+              id="from-date-filter"
+              placeholder="Select from Date"
+            />
+          </div>
+          <div class="filter-group flex-center">
+            <label for="to-date-filter">To:</label>
+            <input
+              type="text"
+              id="to-date-filter"
+              placeholder="Select to Date"
+            />
+          </div>
+          <div class="filter-btns-div flex-center">
+            <!-- <p>Search:</p> -->
+            <button id="apply-filters">Apply</button>
+            <button id="reset-filters">Reset</button>
+          </div>
+        </div>
+      </div>
+      <!-- *** SUMMARY *** -->
+      <div class="summary flex-center">
+        <div class="summ-title flex-row">
+          <img src="images/3a245f8c47464d9283ca.png" alt="fox-logo" />
+          <h2>Expenses</h2>
+          <div class="searchBtnDiv flex-center">
+            <!-- <p>Search by date</p> -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#1f1f1f"
+            >
+              <path
+                d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="totals flex-row">
+          <div class="today-tot flex-center">Today: <span></span></div>
+          <div class="month-tot flex-center">This month: <span></span></div>
+        </div>
+      </div>
+      <!-- *** ADD EXPENSE MODAL *** -->
+      <button class="add-expense-modal">Add Expense</button>
+      <ul class="expense-list flex-center"></ul>
+      <div class="add-modal">
+        <div class="add-modal-content flex-center">
+          <h2>Add expense</h2>
+          <button class="close-modal">x</button>
+          <form action="" class="modal-form flex-center">
+            <div class="modal-form-grp">
+              <label for="exp-name">Name:</label>
+              <input
+                type="text"
+                id="exp-name"
+                name="exp-name"
+                maxlength="30"
+                pattern="^[\d\w\.\-]{3,15}[\s]?([\w\d\.\-]{1,15})?$"
+                required
+              />
+            </div>
+            <div class="modal-form-grp">
+              <label for="exp-amount">Amount:</label>
+              <input
+                type="number"
+                id="exp-amount"
+                name="exp-amount"
+                min="0"
+                max="9999.99"
+                step="0.01"
+                required
+              />
+            </div>
+            <div class="modal-form-grp">
+              <label for="exp-category">Category:</label>
+              <select name="exp-category" id="exp-category" required>
+                <option value="">Select a category</option>
+                <option value="food">Food</option>
+                <option value="transport">Transport</option>
+                <option value="bills">Bills</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="modal-form-grp">
+              <label for="exp-date">Date:</label>
+              <input
+                type="text"
+                id="exp-date"
+                name="exp-date"
+                placeholder="Select Date"
+                required
+              />
+            </div>
+            <button type="submit" class="submit-btn">Add</button>
+          </form>
+        </div>
+      </div>
+      <!-- *** INFO MODAL *** -->
+      <div class="info-modal flex-center" style="display: none"></div>
+      <!-- *** Filter Modal *** -->
+      <div class="filter-modal flex-center" style="display: none"></div>
+      <div class="blur-modal" style="display: none"></div>
+    </div>
+  </body>
+</html>
